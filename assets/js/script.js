@@ -30,6 +30,8 @@ for (let i = 9; i < 18; i++) {
 
 
     // Save the event in local storage when the save button is clicked in that timeblock.✅
+
+
 $(".saveBtn").on("click", function(event) {
     event.preventDefault();
         
@@ -39,7 +41,15 @@ $(".saveBtn").on("click", function(event) {
         
     localStorage.setItem("event-" + index, userEvent); // Use a unique key for each textarea
     });
+    renderEvent();
     }
+    
+
 
 // Persist events between refreshes of a page.
 
+function renderEvent() {
+    var userEvent = localStorage.getItem("event-");
+    return;
+    // console.log(renderEvent);
+}
