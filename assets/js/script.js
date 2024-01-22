@@ -4,6 +4,7 @@ var today = dayjs();
 $("#currentDay").text(today.format("dddd, D MMMM YYYY"));
 
 // Present timeblocks for standard business hours when the user scrolls down. ✅
+// Color-code each timeblock based on past, present, and future when the timeblock is viewed.✅
 
 var timeblockContainer = $("#timeblock");
 
@@ -26,14 +27,25 @@ for (let i = 9; i < 18; i++) {
     } else {
         form.addClass("future");
     }
+
+
+    // Save the event in local storage when the save button is clicked in that timeblock.✅
+
+
+
+$(".saveBtn").on("click", function(event) {
+    event.preventDefault();
+        
+    var index = $(event.target).closest("form").index(); // Get the index of the form
+    var userEvent = $(event.target).siblings(".event").val();
+    console.log(userEvent);
+        
+    localStorage.setItem("event-" + index, userEvent); // Use a unique key for each textarea
+    });
     }
 
 
-// Color-code each timeblock based on past, present, and future when the timeblock is viewed.✅
 
-
-
-// Save the event in local storage when the save button is clicked in that timeblock.
 
 
 
@@ -41,3 +53,23 @@ for (let i = 9; i < 18; i++) {
 
 
 // Persist events between refreshes of a page.
+
+
+
+
+
+
+
+
+// $(".saveBtn").on("click", function(event) {
+//     event.preventDefault();
+        
+//     var index = $(event.target).closest("form").index(); // Get the index of the form
+//     var userEvent = $(event.target).siblings(".event").val();
+//     console.log(userEvent);
+        
+//     localStorage.setItem("event-" + index, userEvent); // Use a unique key for each textarea
+        
+//     // Example: localStorage.setItem("event-0", userEvent) for the first textarea
+//     });
+//     }
