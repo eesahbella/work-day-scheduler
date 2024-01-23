@@ -31,39 +31,29 @@ for (let i = 9; i < 18; i++) {
 
     // Save the event in local storage when the save button is clicked in that timeblock.✅
 
-// Persist events between refreshes of a page.
-
-
 $(".saveBtn").on("click", function(event) {
     event.preventDefault();
         
-    var index = $(event.target).closest("form").index(); // Get the index of the form
+    var currentIndex = i; // Get the index of the for loop
     var userEvent = $(event.target).siblings(".event").val();
-    console.log(userEvent);
+    // console.log(userEvent);
         
-    localStorage.setItem("event-" + index, userEvent); // Use a unique key for each textarea
-    });
+    localStorage.setItem("event-" + currentIndex, userEvent);
     renderEvent();
+    });
+    
     }
     
+
+
+    // Persist events between refreshes of a page.
     function renderEvent() {
-        // var userEvent = localStorage.getItem("event-");
-        // return;
-        // console.log(renderEvent);
-        // console.log(userEvent);
-        $("#event-9").text(localStorage.getItem("event-3"));
-    $("#event-10").text(localStorage.getItem("event-4"));
-    $("#event-11").text(localStorage.getItem("event-11"));
-    $("#event-12").text(localStorage.getItem("event-12"));
-    $("#event-13").text(localStorage.getItem("event-13"));
-    $("#event-14").text(localStorage.getItem("event-14"));
-    $("#event-15").text(localStorage.getItem("event-15"));
-    $("#event-16").text(localStorage.getItem("event-16"));
-    $("#event-17").text(localStorage.getItem("event-17"));
+        for (let i = 9; i < 18; i++) {
+            $("#event-" + currentIndex).text(localStorage.getItem("event-" + currentIndex));
+        }
+        }
 
-    }
 
-// Persist events between refreshes of a page.
 
 
 
